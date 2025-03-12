@@ -14,7 +14,7 @@ terraform {
 provider "selectel" {
   domain_name = "411974"
   username    = "terraform-rus"
-  password    = ""
+  password    = "s7DAAuC-"
   auth_region = "ru-7"
   auth_url = "https://cloud.api.selcloud.ru/identity/v3/"
 }
