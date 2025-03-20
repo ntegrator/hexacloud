@@ -2,20 +2,11 @@ resource "openstack_networking_network_v2" "network_1" {
   name           = "private-network"
   admin_state_up = "true"
 }
-resource "openstack_networking_network_v2" "network_2" {
-  name           = "external-network"
-  admin_state_up = "true"
-}
 
 resource "openstack_networking_subnet_v2" "subnet_1" {
-  name       = "vlan1"
+  name       = "private-subnet"
   network_id = openstack_networking_network_v2.network_1.id
   cidr       = "192.168.233.0/24"
-}
-resource "openstack_networking_subnet_v2" "subnet_2" {
-  name       = "vlan2"
-  network_id = openstack_networking_network_v2.network_2.id
-  cidr       = "192.168.234.0/24"
 }
 
 data "openstack_networking_network_v2" "external_network_1" {
@@ -29,5 +20,5 @@ resource "openstack_networking_router_v2" "router_1" {
 
 resource "openstack_networking_router_interface_v2" "router_interface_1" {
   router_id = openstack_networking_router_v2.router_1.id
-  subnet_id = openstack_networking_subnet_v2.subnet_2.id
+  subnet_id = openstack_networking_subnet_v2.subnet_1.id
 }

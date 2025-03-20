@@ -1,3 +1,3 @@
 output "public_ip_address" {
-  value = openstack_networking_floatingip_v2.floatingip_4.fixed_ip
+  value = openstack_networking_floatingip_v2.floatingip_1.fixed_ip
 }
